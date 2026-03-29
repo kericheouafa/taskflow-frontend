@@ -14,12 +14,4 @@ export class TacheService {
   getTaches(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
-
-  createTache(tache: any): Observable<any> {
-    return this.http.post(this.apiUrl, tache);
-  }
-
-  deleteTache(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
 }

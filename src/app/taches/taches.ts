@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TacheService } from '../tache';
+import { TacheService } from './tache';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,11 +13,13 @@ export class Taches implements OnInit {
 
   taches: any[] = [];
 
-  constructor(private tacheService: TacheService) {}
-
+  constructor(private tacheService: TacheService) {
+    console.log('composant taches chargé !');
+}
   ngOnInit(): void {
-    this.tacheService.getTaches().subscribe(data => {
+    this.tacheService.getTaches().subscribe((data: any[]) => {
+        console.log('données reçues:', data);
       this.taches = data;
-    });
+    }); 
   }
 }
