@@ -1,0 +1,10 @@
+<div>
+  <h1>📋 Mes Tâches</h1>
+
+  <p *ngIf="taches.length === 0">Chargement en cours...</p>
+
+  <div *ngFor="let tache of taches">
+    <p>{{ tache.titre }} - Priorité : {{ tache.priorite }}</p>
+  </div>
+
+</div>

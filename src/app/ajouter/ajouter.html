@@ -1,0 +1,38 @@
+<div>AJOUTER TACHE</div>
+<form>
+<!-- #ajouter tache -->
+<mat-form-field >
+<mat-label>Titre Tâche</mat-label>
+<input matInput placeholder="Taches" value="">
+</mat-form-field> 
+
+
+<mat-form-field>
+  <mat-label>Date limite</mat-label>
+<!-- #docregion toggle -->
+  <input matInput [matDatepicker]="picker">
+  <mat-hint>DD/MM/YYYY</mat-hint>
+  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker>
+<!-- #enddocregion toggle -->
+</mat-form-field>
+
+<mat-form-field>
+<mat-label>Priorité :</mat-label>
+<select matNativeControl required>
+  <option >1</option>
+  <option >2</option>
+  <option >3</option>
+ 
+</select>
+</mat-form-field>
+
+<div>
+<button >Valider</button>
+
+
+
+</div>
+
+</form>
+
