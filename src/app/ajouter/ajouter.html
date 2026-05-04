@@ -3,23 +3,25 @@
 <!-- #ajouter tache -->
 <mat-form-field >
 <mat-label>Titre Tâche</mat-label>
-<input matInput placeholder="Taches" value="">
+<input matInput placeholder="Taches" value="" [(ngModel)]="titre">
+
 </mat-form-field> 
 
 
 <mat-form-field>
   <mat-label>Date limite</mat-label>
-<!-- #docregion toggle -->
-  <input matInput [matDatepicker]="picker">
+<!-- #date limite de la tache -->
+  <input matInput [matDatepicker]="picker" [(ngModel)]="dateLimite">
   <mat-hint>JJ/MM/AAAA</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
+  
 <!-- #enddocregion toggle -->
 </mat-form-field>
 
 <mat-form-field>
 <mat-label>Priorité :</mat-label>
-<select matNativeControl required>
+<select matNativeControl  [(ngModel)]="priorite"  required>
   <option >1</option>
   <option >2</option>
   <option >3</option>
