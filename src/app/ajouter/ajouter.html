@@ -2,8 +2,10 @@
 <form>
 <!-- #ajouter tache -->
 <mat-form-field >
-<mat-label>Titre Tâche</mat-label>
-<input matInput placeholder="Taches" value="" [(ngModel)]="titre">
+<mat-label> Titre Tâche </mat-label>
+<!--  <input matInput placeholder="Taches" value="" [(ngModel)]="titre">    --> 
+<!--le champs va etre null , il faut rajouter un attribut name  car on dans Form pour que  le ngModel can work this Mf -_- same thing pour les autres  -->
+<input matInput placeholder="Taches" name="titre" [(ngModel)]="titre">
 
 </mat-form-field> 
 
@@ -11,7 +13,7 @@
 <mat-form-field>
   <mat-label>Date limite</mat-label>
 <!-- #date limite de la tache -->
-  <input matInput [matDatepicker]="picker" [(ngModel)]="dateLimite">
+  <input matInput [matDatepicker]="picker" name="dateLimite" [(ngModel)]="dateLimite">
   <mat-hint>JJ/MM/AAAA</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
@@ -21,7 +23,7 @@
 
 <mat-form-field>
 <mat-label>Priorité :</mat-label>
-<select matNativeControl  [(ngModel)]="priorite"  required>
+<select matNativeControl name="priorite" [(ngModel)]="priorite" required>
   <option >1</option>
   <option >2</option>
   <option >3</option>
@@ -30,7 +32,7 @@
 </mat-form-field>
 
 <div>
-<button >Valider</button>
+<button (click)="ajouterTache()">Valider</button>
 
 
 

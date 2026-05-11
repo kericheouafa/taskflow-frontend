@@ -23,3 +23,4 @@ export class TachesService {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
 }
+
