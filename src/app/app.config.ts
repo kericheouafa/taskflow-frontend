@@ -6,16 +6,17 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
+import { withRouterConfig } from '@angular/router';
 
 registerLocaleData(localeFr);
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
+      provideBrowserGlobalErrorListeners(),
+    provideRouter(routes, withRouterConfig({ onSameUrlNavigation: 'reload' })),
     provideHttpClient(),
-    provideNativeDateAdapter (),
+    provideNativeDateAdapter(),
     { provide: LOCALE_ID, useValue: 'fr-FR' }
     
   ]

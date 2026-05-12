@@ -1,11 +1,49 @@
+<!--
 <div>
   <h1>📋 Mes Tâches</h1>
-
-  <p *ngIf="taches.length === 0">Chargement en cours...</p>
-  <!-- <p>{{ taches.length }} tâches</p>   -->
 
   <div *ngFor="let tache of taches">
     <p>{{ tache.titre }} - Priorité : {{ tache.priorite }}</p>
   </div>
 
+</div>
+
+-->
+<div>
+  <h1>📋 Mes Tâches</h1>
+<table mat-table [dataSource]="taches" >
+
+  <!--- l'ordre ici n'est pas important okaaaay!!!  -->
+
+  <!-- colonne titre de la tâche deeehhhh -->
+  <ng-container matColumnDef="titre">
+    <th mat-header-cell *matHeaderCellDef> titre </th>
+    <td mat-cell *matCellDef="let tache"> {{tache.titre}} </td>
+  </ng-container>
+ <!-- priorité -->
+  <ng-container matColumnDef="priorite">
+    <th mat-header-cell *matHeaderCellDef> priorite </th>
+    <td mat-cell *matCellDef="let tache"> {{tache.priorite}} </td>
+  </ng-container>
+
+  <!-- a date limite de la tâche -->
+  <ng-container matColumnDef="dateLimite">
+    <th mat-header-cell *matHeaderCellDef> dateLimite </th>
+    <td mat-cell *matCellDef="let tache"> {{tache.dateLimite}} </td>
+  </ng-container>
+
+ <!-- ici on ajoute une colonne pour mettre le boutton supprimer , qui supp en appelant le id -->
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef> action </th>
+      <td mat-cell *matCellDef="let tache">  
+        <button mat-raised-button (click)="supprimerTache(tache.id)">supprimer</button>
+        </td>
+  </ng-container>
+
+<!-- ça c'est la pramière ligne du tableau "je pense !!!!" -->
+  <tr mat-header-row *matHeaderRowDef="['titre', 'priorite', 'dateLimite','action']"></tr>
+
+  <!-- et ça c'est le contenu voilà quoi !!!!!  -->
+  <tr mat-row *matRowDef="let row; columns: ['titre', 'priorite', 'dateLimite','action']"></tr>
+</table>
 </div>
