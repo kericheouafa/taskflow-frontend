@@ -29,7 +29,7 @@
   <!-- a date limite de la tâche -->
   <ng-container matColumnDef="dateLimite">
     <th mat-header-cell *matHeaderCellDef> dateLimite </th>
-    <td mat-cell *matCellDef="let tache"> {{tache.dateLimite}} </td>
+    <td mat-cell *matCellDef="let tache">{{ tache.dateLimite | date:'dd/MM/yyyy' }}</td>
   </ng-container>
 
  <!-- ici on ajoute une colonne pour mettre le boutton supprimer , qui supp en appelant le id -->

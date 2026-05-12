@@ -8,13 +8,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
 import { Router } from '@angular/router';
-
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-taches',
   standalone: true,
   imports: [
-    
+    DatePipe,
     MatTableModule,
      NgIf,
     NgFor,
@@ -46,19 +46,13 @@ ngOnInit(): void {
     });
 }
 
-supprimerTache(id : number): void {
- 
-    
-     
-    this.tachesService.deleteTache(id).subscribe(() => { this.ngOnInit();
-       // this.router.navigate(['/taches']);
-       
-    // on rafraichie la page apres la suppréssion comme ça on voie que la tache a bien été deleeete
+supprimerTache(id: number): void {
+    this.tachesService.deleteTache(id).subscribe(() => {
+        this.ngOnInit();
     });
 }
 
-
-
-
-
+      
+       //le ngOnInit  recharge toute la liste depuis la BDD en temps réel
+    //   this.router.navigate(['/taches']); rafraichie la page mais ça garantie pas l'affichage de la nouvelle istance de notrebase
 }
