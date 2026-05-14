@@ -7,8 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class TachesService {
 
-  private apiUrl = 'http://localhost:8080/taches';
-
+  private apiUrl = 'https://taskflow-springboot-production.up.railway.app/taches';
   constructor(private http: HttpClient) {}
 
   getTaches(): Observable<any[]> {
