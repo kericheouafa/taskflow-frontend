@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http';
 import { routes } from './app.routes';
@@ -7,9 +7,9 @@ import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { LOCALE_ID } from '@angular/core';
 import { withRouterConfig } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localeFr);
-
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withRouterConfig({ onSameUrlNavigation: 'reload' })),
     provideHttpClient(),
     provideNativeDateAdapter(),
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
-    
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+    importProvidersFrom(FormsModule)
   ]
 };
