@@ -27,38 +27,26 @@ constructor(private tachesService: TachesService ,  private router: Router) {}
 
   
 ajouterTache(): void {
-
-  if (this.dateLimite === null) {
+  if (!this.dateLimite) {
     this.message = 'Veuillez choisir une date limite.';
     return;
   }
 
   const aujourdHui = new Date();
 
-  if (this.dateLimite > aujourdHui) {
-    this.message = 'La date limite est valide.';
-
-    const nouvelleTache = {
-      titre: this.titre,
-      priorite: this.priorite,
-      dateLimite: this.dateLimite
-    };
-
-    console.log('titre:', this.titre);
-    console.log('priorite:', this.priorite);
-    console.log('dateLimite:', this.dateLimite);
-
-    this.tachesService.createTache(nouvelleTache).subscribe(() => {
-      this.router.navigate(['/taches']);
-    });
-
-  } 
-   if (this.dateLimite <= aujourdHui) {
-  this.message = "Veuillez sélectionner une date limite ultérieure à aujourd'hui.";
-
-
-  } 
-  else {
-    this.message = 'La date limite doit être dans le futur.';
+  if (this.dateLimite <= aujourdHui) {
+    this.message = "Veuillez sélectionner une date ultérieure à aujourd'hui.";
+    return;
   }
-}}
+
+  const nouvelleTache = {
+    titre: this.titre,
+    priorite: this.priorite,
+    dateLimite: this.dateLimite
+  };
+
+  this.tachesService.createTache(nouvelleTache).subscribe(() => {
+    this.router.navigate(['/taches']);
+  });
+}
+}
