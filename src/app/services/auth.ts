@@ -20,7 +20,12 @@ private apiUrl = `${environment.apiUrl}/api/auth`;
       { responseType: 'text' as 'json' }
     );
   }
-
+register(email: string, password: string): Observable<string> {
+  return this.http.post<string>(`${this.apiUrl}/register`,
+    { email, password },
+    { responseType: 'text' as 'json' }
+  );
+}
   logout() {
     localStorage.removeItem('token');
   }

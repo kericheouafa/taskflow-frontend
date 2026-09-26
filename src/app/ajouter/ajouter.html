@@ -1,3 +1,5 @@
+
+
 <div>AJOUTER TACHE</div>
 <form>
 <!-- #ajouter tache -->
@@ -31,11 +33,14 @@
 </select>
 </mat-form-field>
 
+@if (message) {
+  <div>
+    {{ message }}
+  </div>
+}
+
 <div>
-<button (click)="ajouterTache()">Valider</button>
-
-
-
+    <button (click)="ajouterTache()">Valider</button>
 </div>
 
 </form>
