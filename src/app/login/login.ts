@@ -3,11 +3,15 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-toggle";
+import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatButtonToggle, MatButtonModule, RouterModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })

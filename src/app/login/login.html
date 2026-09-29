@@ -1,5 +1,17 @@
 <div class="login-container">
   <h2>Connexion</h2>
+
+<section>
+  <div class="example-label">Outlined</div>
+  <div class="example-button-row">
+  
+    <a matButton="outlined" href="http://localhost:4200/register/" target="_blank">Inscription1</a>
+<button mat-raised-button routerLink="/register">Inscription2</button>
+  </div>
+</section>
+
+
+  <!-- <button mat-button routerLink="/ajouter"> S'inscrire</button>    -->
   <form (ngSubmit)="onLogin()">
     <div>
       <label>Email</label>
@@ -10,7 +22,8 @@
       <input type="password" [(ngModel)]="password" name="password" required />
     </div>
     <button type="submit">Se connecter</button>
-    <mat-button-toggle routerLink="/register">S'inscrire</mat-button-toggle>
+    
   </form>
   <p *ngIf="erreur" style="color:red">{{ erreur }}</p>
-</div>
+
+ 

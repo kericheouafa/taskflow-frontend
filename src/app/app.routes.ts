@@ -9,7 +9,7 @@ import { Register } from './register/register';
 export const routes: Routes = [
   { path: '', component: Accueil },
     { path: 'register', component: Register },
-  { path: 'login', component: LoginComponent },
+      { path: 'login', component: LoginComponent },
   { path: 'taches', component: Taches, canActivate: [authGuard] },
   { path: 'ajouter', component: Ajouter, canActivate: [authGuard] }
 ];
