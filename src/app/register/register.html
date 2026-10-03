@@ -14,5 +14,6 @@
     <button type="submit">S'inscrire</button>
   </form>
   <p>Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
+  
  @if (erreurs()['message']) {<p style="color:red">{{ erreurs()['message'] }}</p>}
 </div>

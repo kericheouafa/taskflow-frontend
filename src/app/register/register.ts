@@ -22,10 +22,21 @@ export class Register {
     this.authService.register(this.email, this.password).subscribe({
       next: () => this.router.navigate(['/login']),
       error: (err: HttpErrorResponse) => {
-          console.log('ERREUR REÇUE :', err.error); 
+        // Serveur éteint ou injoignable
+        if (err.status === 0) {
+          this.erreurs.set({ message: 'Serveur injoignable, réessayez plus tard' });
+          return;
+        }
+
+        // Le back renvoie du JSON, mais Angular le lit en texte
+        // (responseType: 'text'), donc on le retransforme en objet
         let body = err.error;
         if (typeof body === 'string') {
-          try { body = JSON.parse(body); } catch { body = { message: body }; }
+          try {
+            body = JSON.parse(body);
+          } catch {
+            body = { message: body };
+          }
         }
         this.erreurs.set(body ?? { message: 'Une erreur est survenue' });
       },
