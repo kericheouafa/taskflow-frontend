@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { MatButtonToggle, MatButtonToggleGroup } from "@angular/material/button-toggle";
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, CommonModule, MatButtonToggle, MatButtonModule, RouterModule],
+  imports: [FormsModule, CommonModule, MatButtonModule, RouterModule],
   templateUrl: './login.html',
   styleUrls: ['./login.css']
 })
@@ -19,7 +20,7 @@ export class LoginComponent {
 
   email: string = '';
   password: string = '';
-  erreur: string = '';
+  erreur = signal('');
 
   constructor(private authService: AuthService, private router: Router) {}
 
@@ -29,9 +30,14 @@ export class LoginComponent {
         localStorage.setItem('token', token);
         this.router.navigate(['/']);
       },
-      error: () => {
-        this.erreur = 'Email ou mot de passe incorrect';
-      }
+    
+       error: (err: HttpErrorResponse) => {
+       this.erreur.set(
+        err.status === 0
+          ? 'Serveur injoignable, réessayez plus tard'
+          : 'Email ou mot de passe incorrect'
+      );
+      },
     });
   }
 }

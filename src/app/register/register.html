@@ -4,13 +4,15 @@
     <div>
       <label>Email</label>
       <input type="email" [(ngModel)]="email" name="email" required />
+      @if (erreurs()['email']) {<small style="color:red">{{ erreurs()['email'] }}</small>}
     </div>
     <div>
       <label>Mot de passe</label>
       <input type="password" [(ngModel)]="password" name="password" required />
+      @if (erreurs()['password']) {<small style="color:red">{{ erreurs()['password'] }}</small>}
     </div>
     <button type="submit">S'inscrire</button>
   </form>
   <p>Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
-  <p *ngIf="erreur" style="color:red">{{ erreur }}</p>
+ @if (erreurs()['message']) {<p style="color:red">{{ erreurs()['message'] }}</p>}
 </div>

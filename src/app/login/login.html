@@ -1,11 +1,5 @@
 <div class="login-container">
   <h2>Connexion</h2>
-
-
-
-  
-
-
   <!-- <button mat-button routerLink="/ajouter"> S'inscrire</button>    -->
   <form (ngSubmit)="onLogin()">
     <div>
@@ -20,6 +14,6 @@
     <div><button mat-raised-button routerLink="/register">Inscription</button></div>
     
   </form>
-  <p *ngIf="erreur" style="color:red">{{ erreur }}</p>
+@if (erreur()) {<p style="color:red">{{ erreur() }}</p>}
 
  
