@@ -8,7 +8,8 @@
 <!--  <input matInput placeholder="Taches" value="" [(ngModel)]="titre">    --> 
 <!--le champs va etre null , il faut rajouter un attribut name  car on dans Form pour que  le ngModel can work this Mf -_- same thing pour les autres  -->
 <input matInput placeholder="Taches" name="titre" [(ngModel)]="titre">
-
+@if (erreurs()['titre']) {<small style="color:red">{{ erreurs()['titre'] }}</small>}
+  
 </mat-form-field> 
 
 
@@ -19,6 +20,7 @@
   <mat-hint>JJ/MM/AAAA</mat-hint>
   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
+   @if (erreurs()['dateLimite']) {<small style="color:red">{{ erreurs()['dateLimite'] }}</small>}
   
 <!-- #enddocregion toggle -->
 </mat-form-field>
@@ -33,11 +35,7 @@
 </select>
 </mat-form-field>
 
-@if (message) {
-  <div>
-    {{ message }}
-  </div>
-}
+
 
 <div>
     <button (click)="ajouterTache()">Valider</button>

@@ -1,7 +1,8 @@
 <h1>TaskFlow Application</h1>
-<mat-button-toggle-group name="TaskFlow" aria-label="Font Style">
-   <mat-button-toggle routerLink="">Accueil</mat-button-toggle>
-   <mat-button-toggle routerLink="/taches">Liste de Tâche</mat-button-toggle>
-   <mat-button-toggle routerLink="/ajouter">Ajouter une Tâche</mat-button-toggle>
-   <mat-button-toggle (click)="logout()">Se déconnecter</mat-button-toggle>
+<mat-button-toggle-group [value]="selected" (change)="go($event.value)">
+  <mat-button-toggle value="/">Accueil</mat-button-toggle>
+  <mat-button-toggle value="/taches">Liste de Tâche</mat-button-toggle>
+  <mat-button-toggle value="/ajouter">Ajouter une Tâche</mat-button-toggle>
 </mat-button-toggle-group>
+
+<button mat-button (click)="logout()">Se déconnecter</button>

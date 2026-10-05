@@ -36,7 +36,7 @@
   <ng-container matColumnDef="action">
     <th mat-header-cell *matHeaderCellDef> action </th>
       <td mat-cell *matCellDef="let tache">  
-        <button mat-raised-button (click)="supprimerTache(tache.id)">supprimer</button>
+       <button mat-raised-button (click)="supprimerTache(tache.id, tache.titre)">supprimer</button>
         </td>
   </ng-container>
 

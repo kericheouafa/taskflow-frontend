@@ -16,10 +16,7 @@ import { DatePipe } from '@angular/common';
   imports: [
     DatePipe,
     MatTableModule,
-     NgIf,
-    NgFor,
-
-    MatInputModule,
+      MatInputModule,
     MatSelectModule,
     MatButtonModule,
     MatFormFieldModule
@@ -46,8 +43,17 @@ ngOnInit(): void {
     });
 }
 
-supprimerTache(id: number): void {
+supprimerTache(id: number, titre: string): void  {
+const confirmation = confirm(
+   `Voulez-vous supprimer la tâche "${titre}" ?`
+  );
+ if (!confirmation) {
+    return;
+  }
+
+
     this.tachesService.deleteTache(id).subscribe(() => {
+      
         this.ngOnInit();
     });
 }
