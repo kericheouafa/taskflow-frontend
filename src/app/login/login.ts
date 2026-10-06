@@ -29,6 +29,7 @@ export class LoginComponent {
       next: (token: string) => {
         localStorage.setItem('token', token);
         this.router.navigate(['/']);
+        
       },
     
        error: (err: HttpErrorResponse) => {

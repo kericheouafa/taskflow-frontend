@@ -13,11 +13,11 @@ export const authInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(authReq).pipe(
     catchError((err: HttpErrorResponse) => {
-      const isAuthCall = req.url.includes('/login') || req.url.includes('/register');
+      const isAuthCall = req.url.includes('session') || req.url.includes('/session');
 
       if ((err.status === 401 || err.status === 403) && token && !isAuthCall) {
         localStorage.removeItem('token');
-        router.navigate(['/login']);
+        router.navigate(['/session']);
       }
       return throwError(() => err);
     })

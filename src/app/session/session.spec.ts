@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { Session } from './session';
 
-import { Register } from './register';
-import { describe, it, expect, beforeEach} from 'vitest';
-describe('Register', () => {
-  let component: Register;
-  let fixture: ComponentFixture<Register>;
+describe('Session', () => {
+  let component: Session;
+  let fixture: ComponentFixture<Session>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Register],
+      imports: [Session],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(Register);
+    fixture = TestBed.createComponent(Session);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });
