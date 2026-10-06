@@ -6,18 +6,35 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { RouterLink } from '@angular/router';
+
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+
 
 
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule, CommonModule, MatButtonModule, RouterModule],
+  imports: [
+    RouterLink,
+    FormsModule,
+    MatFormFieldModule,   // <mat-form-field> et <mat-label>
+    MatInputModule,       // matInput
+    MatIconModule,        // <mat-icon>
+    MatButtonModule       // mat-icon-button
+  ],
   templateUrl: './login.html',
-  styleUrls: ['./login.css']
+  styleUrl: './login.css'
 })
-export class LoginComponent {
+export class Login {
+hidePassword = signal(true);
 
+togglePassword(event: MouseEvent) {
+  this.hidePassword.set(!this.hidePassword());
+  event.stopPropagation();
+}
   email: string = '';
   password: string = '';
   erreur = signal('');

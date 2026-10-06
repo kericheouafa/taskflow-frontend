@@ -18,7 +18,7 @@ export class InactivityService {
     this.running = true;
     this.events.forEach(e => window.addEventListener(e, this.onActivity));
     this.scheduleExpiry();
-    console.log('InactivityService démarré');
+    
   }
 
   stop() {

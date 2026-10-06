@@ -1,19 +1,45 @@
 <div class="register-container">
   <h2>Inscription</h2>
-  <form (ngSubmit)="register()">
-    <div>
-      <label>Email</label>
-      <input type="email" [(ngModel)]="email" name="email" required />
-      @if (erreurs()['email']) {<small style="color:red">{{ erreurs()['email'] }}</small>}
+
+  <form (ngSubmit)="register()" class="register-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" [(ngModel)]="email" name="email" required />
+    </mat-form-field>
+    <div class="error-zone">
+      @if (erreurs()['email']) {
+        <small class="error-text">{{ erreurs()['email'] }}</small>
+      }
     </div>
-    <div>
-      <label>Mot de passe</label>
-      <input type="password" [(ngModel)]="password" name="password" required />
-      @if (erreurs()['password']) {<small style="color:red">{{ erreurs()['password'] }}</small>}
+
+    <mat-form-field appearance="outline">
+      <mat-label>Mot de passe</mat-label>
+      <input matInput
+             [type]="hidePassword() ? 'password' : 'text'"
+             [(ngModel)]="password"
+             name="password"
+             required />
+      <button mat-icon-button matSuffix type="button"
+              (click)="togglePassword($event)"
+              aria-label="Afficher ou masquer le mot de passe"
+              [attr.aria-pressed]="!hidePassword()">
+        <mat-icon>{{ hidePassword() ? 'visibility_off' : 'visibility' }}</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="error-zone">
+      @if (erreurs()['password']) {
+        <small class="error-text">{{ erreurs()['password'] }}</small>
+      }
     </div>
-    <button type="submit">S'inscrire</button>
+
+    <div class="error-zone">
+      @if (erreurs()['message']) {
+        <small class="error-text">{{ erreurs()['message'] }}</small>
+      }
+    </div>
+
+    <button mat-flat-button type="submit" class="full-width">S'inscrire</button>
   </form>
-  <p>Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
-  
- @if (erreurs()['message']) {<p style="color:red">{{ erreurs()['message'] }}</p>}
+
+  <p class="login-link">Déjà un compte ? <a routerLink="/login">Se connecter</a></p>
 </div>

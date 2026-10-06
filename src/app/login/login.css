@@ -1,30 +1,25 @@
-:host {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 24px;
+.login-container {
+  max-width: 380px;
+  margin: 48px auto 0;      /* marge en haut, pas de centrage vertical */
+  padding: 0 16px;
 }
 
-form {
+.login-form {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 8px;
+}
+
+.full-width {
   width: 100%;
-  max-width: 320px;
 }
 
-label {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+.error-zone {
+  min-height: 24px;          /* place réservée : plus de décalage */
 }
 
-input {
-  padding: 8px;
-}
-
-button {
-  padding: 8px;
-  cursor: pointer;
+.error-text {
+  margin: 0;
+  color: #b3261e;
+  font-size: 14px;
 }

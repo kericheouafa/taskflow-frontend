@@ -3,14 +3,31 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { AuthService } from '../services/auth';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
-  selector: 'app-register',
-  imports: [FormsModule, RouterLink],
+  selector: 'app-login',
+  imports: [
+    RouterLink,
+    FormsModule,
+    MatFormFieldModule,   // <mat-form-field> et <mat-label>
+    MatInputModule,       // matInput
+    MatIconModule,        // <mat-icon>
+    MatButtonModule       // mat-icon-button
+  ],
   templateUrl: './register.html',
-  styleUrl: './register.css',
+  styleUrl: './register.css'
 })
 export class Register {
+  hidePassword = signal(true);
+
+togglePassword(event: MouseEvent) {
+  this.hidePassword.set(!this.hidePassword());
+  event.stopPropagation();
+}
   email = '';
   password = '';
   erreurs = signal<Record<string, string>>({});
