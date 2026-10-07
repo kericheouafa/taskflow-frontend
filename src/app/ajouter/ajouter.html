@@ -7,7 +7,7 @@
 <mat-label> Titre Tâche </mat-label>
 <!--  <input matInput placeholder="Taches" value="" [(ngModel)]="titre">    --> 
 <!--le champs va etre null , il faut rajouter un attribut name  car on dans Form pour que  le ngModel can work this Mf -_- same thing pour les autres  -->
-<input matInput placeholder="Taches" name="titre" [(ngModel)]="titre">
+<input matInput placeholder="Taches" name="titre" autocomplete="off" [(ngModel)]="titre">
 @if (erreurs()['titre']) {<small style="color:red">{{ erreurs()['titre'] }}</small>}
   
 </mat-form-field> 

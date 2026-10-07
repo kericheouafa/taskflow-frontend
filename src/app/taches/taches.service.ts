@@ -22,5 +22,11 @@ export class TachesService {
   deleteTache(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
+updateTache(id: number, idStatut: number): Observable<any> {
+  return this.http.put(
+    `${this.apiUrl}/${id}/statut/${idStatut}`,
+    {}
+  );
+}
 }
 

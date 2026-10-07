@@ -7,13 +7,18 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgIf, NgFor } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
-import { Router } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { DatePipe } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-taches',
   standalone: true,
   imports: [
+    
+    RouterModule,
+    MatIconModule,
+    MatInputModule,
     DatePipe,
     MatTableModule,
       MatInputModule,
@@ -57,6 +62,20 @@ const confirmation = confirm(
         this.ngOnInit();
     });
 }
+
+updateStatut(id: number, idStatut: number) {
+  this.tachesService.updateTache(id, idStatut).subscribe({
+    next: (tache: any) => {
+      console.log('Statut modifié', tache);
+    },
+    error: (error: any) => {
+      console.error('Erreur lors de la modification du statut', error);
+    }
+  });
+}
+
+
+
 
       
        //le ngOnInit  recharge toute la liste depuis la BDD en temps réel

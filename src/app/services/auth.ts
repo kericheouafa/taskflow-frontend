@@ -45,4 +45,15 @@ export class AuthService {
   getToken(): string | null {
     return localStorage.getItem('token');
   }
+
+  getEmail(): string {
+  const token = localStorage.getItem('token');   // adaptez la clé à la vôtre
+  if (!token) return '';
+  try {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return payload.sub ?? '';
+  } catch {
+    return '';
+  }
+}
 }

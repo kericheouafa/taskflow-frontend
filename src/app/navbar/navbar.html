@@ -1,8 +1,24 @@
-<h1>TaskFlow Application</h1>
-<mat-button-toggle-group [value]="selected" (change)="go($event.value)">
-  <mat-button-toggle value="/">Accueil</mat-button-toggle>
-  <mat-button-toggle value="/taches">Liste de Tâche</mat-button-toggle>
-  <mat-button-toggle value="/ajouter">Ajouter une Tâche</mat-button-toggle>
-</mat-button-toggle-group>
+<header class="barre">
+  
 
-<button mat-button (click)="logout()">Se déconnecter</button>
+  <mat-button-toggle-group [value]="selected" (change)="go($event.value)">
+    <mat-button-toggle value="/">Accueil</mat-button-toggle>
+    <mat-button-toggle value="/taches">Liste de Tâche</mat-button-toggle>
+    <mat-button-toggle value="/ajouter">Ajouter une Tâche</mat-button-toggle>
+  </mat-button-toggle-group>
+
+  <span class="spacer"></span>
+
+  <button type="button" class="avatar" [matMenuTriggerFor]="userMenu" aria-label="Menu utilisateur">
+    {{ initiale }}
+  </button>
+</header>
+
+<mat-menu #userMenu="matMenu" xPosition="before">
+  <div class="menu-user">{{ email }}</div>
+  <mat-divider></mat-divider>
+  <button mat-menu-item (click)="logout()">
+    <mat-icon>logout</mat-icon>
+    <span>Se déconnecter</span>
+  </button>
+</mat-menu>
