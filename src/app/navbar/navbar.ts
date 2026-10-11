@@ -31,6 +31,9 @@ export class Navbar {
   get email(): string {
     return this.authService.getEmail();
   }
+  get estConnecte(): boolean {
+  return this.authService.isLoggedIn();
+}
 
 get initiale(): string {
   const local = (this.email.split('@')[0] || '').trim();

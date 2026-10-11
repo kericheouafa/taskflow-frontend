@@ -1,5 +1,8 @@
 <header class="barre">
-
+<a class="marque" routerLink="/">
+  <img src="favicon.svg" alt="" class="logo-icone">
+  <span>Task<span class="flow">Flow</span></span>
+</a>
   <nav class="liens">
     <a routerLink="/" routerLinkActive="actif" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
     <a routerLink="/taches" routerLinkActive="actif">Liste de Tâche</a>
@@ -8,16 +11,25 @@
 
   <span class="spacer"></span>
 
-  <button type="button" class="avatar" [matMenuTriggerFor]="userMenu" aria-label="Menu utilisateur">
-    {{ initiale }}
-  </button>
-</header>
+  @if (estConnecte) {
+    <button type="button" class="avatar" [matMenuTriggerFor]="userMenu" aria-label="Menu utilisateur">
+      {{ initiale }}
+    </button>
 
-<mat-menu #userMenu="matMenu" xPosition="before">
-  <div class="menu-user">{{ email }}</div>
-  <mat-divider></mat-divider>
-  <button mat-menu-item (click)="logout()">
-    <mat-icon>logout</mat-icon>
-    <span>Se déconnecter</span>
-  </button>
-</mat-menu>
+       <mat-menu #userMenu="matMenu" xPosition="before" panelClass="menu-profil">
+      <div class="menu-libelle">Connecté en tant que</div>
+      <div class="menu-user">{{ email }}</div>
+      <mat-divider></mat-divider>
+      <button mat-menu-item class="item-deconnexion" (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Se déconnecter</span>
+      </button>
+    </mat-menu>
+  } @else {
+    <a routerLink="/login" class="bouton-connexion">
+      <mat-icon>person</mat-icon>
+      Espace Personnel
+    </a>
+  }
+
+</header>

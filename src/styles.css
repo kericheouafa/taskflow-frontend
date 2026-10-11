@@ -21,3 +21,18 @@ router-outlet + * {
   display: block;
   width: 100%;
 }
+
+.menu-profil.mat-mdc-menu-panel {
+  --mat-menu-container-color: #fff;
+  --mat-menu-container-shape: 16px;
+  --mat-menu-divider-color: #eceef5;
+  --mat-menu-item-hover-state-layer-color: rgba(67, 56, 202, 0.06);
+
+  min-width: 240px;
+  margin-top: 8px;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(30, 27, 58, 0.12);
+    padding-top: 0;
+  padding-bottom: 0;
+}
