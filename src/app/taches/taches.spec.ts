@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Taches } from './taches';
 import { beforeEach, describe, it, expect } from 'vitest';
+import {MatSort, Sort, MatSortModule} from '@angular/material/sort';
+
 
 describe('Taches', () => {
   let component: Taches;
@@ -9,7 +11,7 @@ describe('Taches', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [Taches],
+      imports: [Taches, MatSortModule],
     }).compileComponents();
 
     fixture = TestBed.createComponent(Taches);

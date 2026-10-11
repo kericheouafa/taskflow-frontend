@@ -1,0 +1,93 @@
+:host {
+  display: block;
+}
+
+.page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+.page h1 {
+  margin: 0 0 8px;
+  font-size: 36px;
+  font-weight: 600;
+}
+
+.sous-titre {
+  margin: 0 0 28px;
+  color: #4b5068;
+}
+
+.carte {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 1px 4px rgba(30, 27, 58, 0.08);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+mat-form-field {
+  width: 100%;
+
+  --mdc-outlined-text-field-outline-color: #cfd2e3;
+  --mat-form-field-outlined-outline-color: #cfd2e3;
+
+  --mdc-outlined-text-field-hover-outline-color: #4338ca;
+  --mat-form-field-outlined-hover-outline-color: #4338ca;
+
+  --mdc-outlined-text-field-focus-outline-color: #4338ca;
+  --mat-form-field-outlined-focus-outline-color: #4338ca;
+
+  --mdc-outlined-text-field-focus-label-text-color: #4338ca;
+  --mat-form-field-outlined-focus-label-text-color: #4338ca;
+
+  --mdc-outlined-text-field-caret-color: #4338ca;
+  --mat-form-field-outlined-caret-color: #4338ca;
+
+  --mdc-outlined-text-field-container-shape: 12px;
+  --mat-form-field-outlined-container-shape: 12px;
+}
+
+.ligne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.erreur {
+  color: #b42318;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.bouton-annuler {
+  padding: 14px 24px;
+  border-radius: 999px;
+  border: 1px solid #cfd2e3;
+  color: #4b5068;
+  text-decoration: none;
+}
+
+.bouton-valider {
+  min-height: 48px;
+  padding: 0 28px;
+  border: 0;
+  border-radius: 999px;
+  background: #4338ca;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+}

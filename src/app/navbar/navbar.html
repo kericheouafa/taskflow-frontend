@@ -1,11 +1,10 @@
 <header class="barre">
-  
 
-  <mat-button-toggle-group [value]="selected" (change)="go($event.value)">
-    <mat-button-toggle value="/">Accueil</mat-button-toggle>
-    <mat-button-toggle value="/taches">Liste de Tâche</mat-button-toggle>
-    <mat-button-toggle value="/ajouter">Ajouter une Tâche</mat-button-toggle>
-  </mat-button-toggle-group>
+  <nav class="liens">
+    <a routerLink="/" routerLinkActive="actif" [routerLinkActiveOptions]="{ exact: true }">Accueil</a>
+    <a routerLink="/taches" routerLinkActive="actif">Liste de Tâche</a>
+    <a routerLink="/ajouter" routerLinkActive="actif">Ajouter une Tâche</a>
+  </nav>
 
   <span class="spacer"></span>
 

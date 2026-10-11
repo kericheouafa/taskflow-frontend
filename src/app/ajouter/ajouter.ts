@@ -7,10 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { TachesService } from '../taches/taches.service';
 import { Router, RouterLink } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-ajouter',
   imports: [
+    RouterLink,
     FormsModule,
     MatSelectModule,
     MatDatepickerModule,
@@ -30,6 +32,9 @@ export class Ajouter {
   dateLimite: Date | null = null;
   message: string = '';
 
+
+  
+
   constructor(
     private tachesService: TachesService,
     private router: Router
@@ -43,6 +48,9 @@ export class Ajouter {
       titre: this.titre,
       priorite: this.priorite,
       dateLimite: this.dateLimite
+    ? formatDate(this.dateLimite, 'yyyy-MM-dd', 'en-US')
+    : null
+
     };
 
     this.tachesService.createTache(nouvelleTache).subscribe({

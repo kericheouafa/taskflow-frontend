@@ -64,13 +64,20 @@
    
   </div>
  @if (taches.length > 0) {
+  <div class="filtres">
+  <button type="button" class="filtre" [class.filtre-actif]="filtreActif === 'tous'" (click)="choisirFiltre('tous')">Toutes</button>
+  <button type="button" class="filtre" [class.filtre-actif]="filtreActif === '1'" (click)="choisirFiltre('1')">À faire</button>
+  <button type="button" class="filtre" [class.filtre-actif]="filtreActif === '2'" (click)="choisirFiltre('2')">En cours</button>
+  <button type="button" class="filtre" [class.filtre-actif]="filtreActif === '3'" (click)="choisirFiltre('3')">Terminées</button>
+</div>
   <div>
 
-    <table mat-table [dataSource]="taches">
+  <table mat-table [dataSource]="dataSource" matSort>
+    
 
       <!-- Titre -->
       <ng-container matColumnDef="titre">
-        <th mat-header-cell *matHeaderCellDef>Tâche</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Tâche</th>
 
         <td mat-cell *matCellDef="let tache">
           <span class="task-title">{{ tache.titre }}</span>
@@ -79,7 +86,7 @@
 
       <!-- Priorité -->
       <ng-container matColumnDef="priorite">
-        <th mat-header-cell *matHeaderCellDef>Priorité</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Priorité</th>
 
         <td mat-cell *matCellDef="let tache">
 
@@ -103,14 +110,14 @@
       </ng-container>
 
     <ng-container matColumnDef="statut">
-  <th mat-header-cell *matHeaderCellDef>Statut</th>
+  <th mat-header-cell *matHeaderCellDef mat-sort-header>Statut</th>
 
   <td mat-cell *matCellDef="let tache">
 
-    <mat-form-field appearance="outline">
-      <mat-select
+   <mat-form-field appearance="outline" class="statut-select" subscriptSizing="dynamic">
+         <mat-select
         [value]="tache.statut.id"
-        (selectionChange)="updateStatut(tache.id, $event.value)">
+        (selectionChange)="updateStatut(tache, $event.value)">
 
         <mat-option [value]="1">À faire</mat-option>
         <mat-option [value]="2">En cours</mat-option>
@@ -125,11 +132,11 @@
       <!-- Date limite -->
       <ng-container matColumnDef="dateLimite">
 
-        <th mat-header-cell *matHeaderCellDef>Échéance</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Échéance</th>
 
-        <td mat-cell *matCellDef="let tache">
-          {{ tache.dateLimite | date:'dd/MM/yyyy' }}
-        </td>
+      <td mat-cell *matCellDef="let tache" [class.date-urgente]="estUrgente(tache)" [class.date-critique]="estCritique(tache)">
+  {{ tache.dateLimite | date:'dd/MM/yyyy' }}
+</td>
 
       </ng-container>
 
@@ -182,3 +189,7 @@
   </div>}
 
 </div>
+
+
+
+

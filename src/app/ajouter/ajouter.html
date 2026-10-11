@@ -1,45 +1,50 @@
+<main class="page">
 
+  <h1>Nouvelle tâche</h1>
+  <p class="sous-titre">Renseignez l'essentiel, vous pourrez la modifier plus tard.</p>
 
-<div>AJOUTER TACHE</div>
-<form>
-<!-- #ajouter tache -->
-<mat-form-field >
-<mat-label> Titre Tâche </mat-label>
-<!--  <input matInput placeholder="Taches" value="" [(ngModel)]="titre">    --> 
-<!--le champs va etre null , il faut rajouter un attribut name  car on dans Form pour que  le ngModel can work this Mf -_- same thing pour les autres  -->
-<input matInput placeholder="Taches" name="titre" autocomplete="off" [(ngModel)]="titre">
-@if (erreurs()['titre']) {<small style="color:red">{{ erreurs()['titre'] }}</small>}
-  
-</mat-form-field> 
+  <div class="carte">
+    <form>
 
+      <mat-form-field appearance="outline">
+        <mat-label>Titre</mat-label>
+        <!-- name est obligatoire dans un <form> pour que ngModel fonctionne -->
+        <input matInput placeholder="Ex. Préparer la démo" name="titre" autocomplete="off" [(ngModel)]="titre">
+        @if (erreurs()['titre']) {
+          <small class="erreur">{{ erreurs()['titre'] }}</small>
+        }
+      </mat-form-field>
 
-<mat-form-field>
-  <mat-label>Date limite</mat-label>
-<!-- #date limite de la tache -->
-  <input matInput [matDatepicker]="picker" name="dateLimite" [(ngModel)]="dateLimite">
-  <mat-hint>JJ/MM/AAAA</mat-hint>
-  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-  <mat-datepicker #picker></mat-datepicker>
-   @if (erreurs()['dateLimite']) {<small style="color:red">{{ erreurs()['dateLimite'] }}</small>}
-  
-<!-- #enddocregion toggle -->
-</mat-form-field>
+      <div class="ligne">
 
-<mat-form-field>
-<mat-label>Priorité :</mat-label>
-<select matNativeControl name="priorite" [(ngModel)]="priorite" required>
-  <option >1</option>
-  <option >2</option>
-  <option >3</option>
- 
-</select>
-</mat-form-field>
+      <mat-form-field appearance="outline" hideRequiredMarker>
+  <mat-label>Priorité</mat-label>
+          <select matNativeControl name="priorite" [(ngModel)]="priorite" required>
+            <option [ngValue]="1">Haute</option>
+            <option [ngValue]="2">Moyenne</option>
+            <option [ngValue]="3">Basse</option>
+          </select>
+        </mat-form-field>
 
+        <mat-form-field appearance="outline">
+          <mat-label>Échéance</mat-label>
+          <input matInput [matDatepicker]="picker" name="dateLimite" [(ngModel)]="dateLimite">
+          <mat-hint>JJ/MM/AAAA</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if (erreurs()['dateLimite']) {
+            <small class="erreur">{{ erreurs()['dateLimite'] }}</small>
+          }
+        </mat-form-field>
 
+      </div>
 
-<div>
-    <button (click)="ajouterTache()">Valider</button>
-</div>
+      <div class="actions">
+        <a routerLink="/taches" class="bouton-annuler">Annuler</a>
+        <button type="button" class="bouton-valider" (click)="ajouterTache()">Enregistrer</button>
+      </div>
 
-</form>
+    </form>
+  </div>
 
+</main>

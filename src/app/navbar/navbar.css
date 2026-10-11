@@ -1,46 +1,60 @@
-.menu-user {
-  padding: 12px 16px;
-  font-weight: 500;
-  color: #4b5068;
-  max-width: 240px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.avatar {
-  width: 40px;
-  height: 40px;
-  padding: 0;
-  border-radius: 50%;
-  background: #4338ca;
-  color: #fff;
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
 :host {
   display: block;
-  width: 100%;
 }
 
 .barre {
   display: flex;
   align-items: center;
-  gap: 16px;
-  width: 100%;
+  gap: 32px;
+  height: 72px;
+  box-sizing: border-box;
+  padding: 0 max(24px, calc((100% - 1040px) / 2 + 24px));
+  background: #fff;
+  border-top: 1px solid #e5e7f0;
+  border-bottom: 1px solid #e5e7f0;
 }
 
-.spacer { flex: 1; }
-.avatar { margin-left: auto; }
-button.avatar.mat-mdc-icon-button {
+.liens {
+  display: flex;
+  gap: 8px;
+}
+
+.liens a {
+  padding: 10px 18px;
+  border-radius: 999px;
+  color: #4b5068;
+  text-decoration: none;
+}
+
+.liens a:hover {
+  background: #f6f7ff;
+}
+
+.liens a.actif {
+  background: #eef0ff;
+  color: #4338ca;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.avatar {
   width: 40px;
   height: 40px;
-  padding: 0;
+  border: 0;
   border-radius: 50%;
   background: #4338ca;
   color: #fff;
   font-size: 14px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  margin-left: auto;
+  cursor: pointer;
+}
+
+.menu-user {
+  padding: 12px 16px;
+  color: #4b5068;
+  font-size: 14px;
 }

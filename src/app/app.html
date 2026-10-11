@@ -1,7 +1,6 @@
-
- <h1>TaskFlow Application</h1>
-
-@if (showNavbar()) {
-   <app-navbar />
-}
-<router-outlet />
+  @if (showNavbar()) {
+    <app-navbar />
+  } @else {
+    <h1 class="titre-auth">TaskFlow Application</h1>
+  }
+  <router-outlet />

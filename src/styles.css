@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --couleur-principale: #4338ca;
+  --couleur-texte: #1e1b3a;
+  --couleur-texte-doux: #6b7089;
+  --couleur-fond: #f6f7fb;
+  --couleur-bordure: #eceef5;
+}
+
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--couleur-texte);
+  background: var(--couleur-fond);
+}
+
+*:not(.mat-icon):not(.material-icons):not(.material-symbols-outlined) {
+  font-family: 'DM Sans', sans-serif !important;
+}
+router-outlet + * {
+  display: block;
+  width: 100%;
+}

@@ -1,1 +1,43 @@
-<p> </p>
+<main class="page">
+
+  <div>
+    <h1>Bonjour !</h1>
+    <p class="intro">Voici où vous en êtes aujourd'hui.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-nombre">{{ nbAFaire() }}</div>
+      <div class="stat-libelle">À faire</div>
+    </div>
+    <div class="stat">
+      <div class="stat-nombre stat-retard">{{ nbEnRetard() }}</div>
+      <div class="stat-libelle">En retard</div>
+    </div>
+    <div class="stat">
+      <div class="stat-nombre stat-termine">{{ nbTerminees() }}</div>
+      <div class="stat-libelle">Terminées</div>
+    </div>
+  </div>
+
+  <section class="carte">
+    <div class="carte-entete">
+      <h2>Prochaines échéances</h2>
+      <a routerLink="/taches" class="lien">Tout voir</a>
+    </div>
+
+    @for (tache of prochaines(); track tache.id) {
+      <div class="echeance">
+        <span>{{ tache.titre }}</span>
+        <span [class.date-urgente]="estUrgente(tache)">
+          {{ tache.dateLimite | date:'dd/MM/yyyy' }}
+        </span>
+      </div>
+    } @empty {
+      <p class="vide">Aucune échéance à venir.</p>
+    }
+  </section>
+
+  <a routerLink="/ajouter" class="bouton-principal">+ Nouvelle tâche</a>
+
+</main>

@@ -8,11 +8,12 @@ import { MatMenu} from '@angular/material/menu';
 import { MatIcon } from '@angular/material/icon';
 import { MatDivider } from '@angular/material/divider';
 import { MatMenuModule } from '@angular/material/menu';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [MatMenuModule, MatDivider, MatIcon, MatMenu, MatButtonToggleModule, MatButtonModule, RouterModule],
+  imports: [RouterLink,RouterLinkActive, MatMenuModule, MatDivider, MatIcon, MatMenu, MatButtonToggleModule, MatButtonModule, RouterModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css',
 })

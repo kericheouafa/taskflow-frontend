@@ -2,82 +2,119 @@
   display: block;
 }
 
+/* ---------- Conteneur et en-tête ---------- */
 .page {
-  max-width: 1100px;
-  margin: 40px auto;
-  padding: 0 24px;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 24px;
   margin-bottom: 28px;
 }
 
 .header h1 {
   margin: 0;
-  font-size: 30px;
+  font-size: 36px;
   font-weight: 600;
 }
 
 .header p {
-  margin-top: 8px;
-  color: #777;
+  margin: 8px 0 0;
+  color: #4b5068;
 }
 
+/* ---------- Bouton Nouvelle tâche ---------- */
 .add-button {
-  height: 44px;
+  height: 48px;
+  padding: 0 28px;
+
+  --mdc-protected-button-container-color: #4338ca;
+  --mat-button-protected-container-color: #4338ca;
+
+  --mdc-protected-button-label-text-color: #fff;
+  --mat-button-protected-label-text-color: #fff;
+
+  --mdc-protected-button-container-shape: 999px;
+  --mat-button-protected-container-shape: 999px;
+
+  --mdc-protected-button-container-height: 48px;
+  --mat-button-protected-container-height: 48px;
+
+  --mdc-protected-button-container-elevation-shadow: none;
+  --mat-button-protected-container-elevation-shadow: none;
 }
 
+/* ---------- Carte autour du tableau ---------- */
 .table-container {
-  background: white;
-  border-radius: 12px;
+  background: #fff;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 4px rgba(30, 27, 58, 0.08);
 }
 
+/* ---------- Tableau ---------- */
 table {
   width: 100%;
+  background: #fff;
+
+  --mat-table-row-item-outline-color: #eceef5;
+  --mdc-list-list-item-divider-color: #eceef5;
 }
 
 th {
-  font-weight: 600;
-  color: #555;
+  font-weight: 500;
+  font-size: 14px;
+  color: #4b5068;
 }
 
 td,
 th {
-  padding: 16px 20px;
+  padding: 18px 28px;
+  border-bottom: 1px solid #eceef5;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr.mat-mdc-row:hover td {
+  background: #f6f7ff;
 }
 
 .task-title {
   font-weight: 500;
 }
 
+/* ---------- Pastilles de priorité ---------- */
 .priority {
   display: inline-block;
-  padding: 5px 12px;
-  border-radius: 20px;
-  font-size: 13px;
-  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .priority-high {
-  background: #fde2e2;
-  color: #c62828;
+  background: #fde4e2;
+  color: #9b1c13;
 }
 
 .priority-medium {
-  background: #fff1cc;
-  color: #a66a00;
+  background: #fdefc7;
+  color: #6b4a00;
 }
 
 .priority-low {
-  background: #e1f3e8;
-  color: #287d46;
+  background: #e0f3e8;
+  color: #14532d;
 }
 
+/* ---------- Bouton supprimer ---------- */
 .delete-button {
   opacity: 0.7;
 }
@@ -86,6 +123,7 @@ th {
   opacity: 1;
 }
 
+/* ---------- Liste vide ---------- */
 .empty-state {
   text-align: center;
   padding: 80px 20px;
@@ -101,4 +139,52 @@ th {
 .empty-state h2 {
   margin: 20px 0 8px;
   color: #444;
+}
+.statut-select {
+  width: 140px;
+  font-size: 14px;
+
+  --mat-form-field-container-height: 40px;
+  --mat-form-field-container-vertical-padding: 8px;
+
+  --mdc-outlined-text-field-outline-color: #cfd2e3;
+  --mat-form-field-outlined-outline-color: #cfd2e3;
+
+  --mdc-outlined-text-field-container-shape: 10px;
+  --mat-form-field-outlined-container-shape: 10px;
+}
+.date-urgente {
+  color: #e11506;
+  font-weight: 500;
+}
+
+.date-critique {
+  color: #c77700;
+  font-weight: 500;
+}
+.filtres {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filtre {
+  padding: 8px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  background: #fff;
+  border: 1px solid #cfd2e3;
+  color: #4b5068;
+  cursor: pointer;
+}
+
+.filtre:hover {
+  background: #f6f7ff;
+}
+
+.filtre-actif,
+.filtre-actif:hover {
+  background: #4338ca;
+  border-color: #4338ca;
+  color: #fff;
 }
