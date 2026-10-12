@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
+import { beforeEach, describe, it, expect } from 'vitest';
 import { Session } from './session';
+import { provideRouter } from '@angular/router';
 
 describe('Session', () => {
   let component: Session;
@@ -9,6 +10,8 @@ describe('Session', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [Session],
+       providers: [
+        provideRouter([]),]
     }).compileComponents();
 
     fixture = TestBed.createComponent(Session);

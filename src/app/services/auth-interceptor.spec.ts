@@ -1,10 +1,9 @@
+
 import { TestBed } from '@angular/core/testing';
 import { HttpClient, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { Router } from '@angular/router';
-
 import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest';
-
 import { authInterceptor } from './auth-interceptor';
 
 describe('authInterceptor', () => {
@@ -35,7 +34,6 @@ describe('authInterceptor', () => {
 
   it('ajoute le header Authorization quand un token existe', () => {
     localStorage.setItem('token', 'abc123');
-
     http.get('/api/tasks').subscribe();
 
     const req = httpMock.expectOne('/api/tasks');
@@ -43,7 +41,7 @@ describe('authInterceptor', () => {
     req.flush([]);
   });
 
-  it("n'ajoute pas de header sans token", () => {
+  it("n'ajoute pas de header Authorization sans token", () => {
     http.get('/api/tasks').subscribe();
 
     const req = httpMock.expectOne('/api/tasks');
@@ -51,16 +49,18 @@ describe('authInterceptor', () => {
     req.flush([]);
   });
 
-  it('supprime le token et redirige vers /login sur une 401', () => {
+  it('supprime le token et redirige vers /session sur une erreur 401', () => {
     localStorage.setItem('token', 'expire');
 
     http.get('/api/tasks').subscribe({ error: () => {} });
 
-    httpMock.expectOne('/api/tasks')
-      .flush('Unauthorized', { status: 401, statusText: 'Unauthorized' });
+    httpMock.expectOne('/api/tasks').flush('Unauthorized', {
+      status: 401,
+      statusText: 'Unauthorized'
+    });
 
     expect(localStorage.getItem('token')).toBeNull();
-    expect(routerSpy.navigate).toHaveBeenCalledWith(['/login']);
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/session']);
   });
 
   it('ne redirige pas quand la 401 vient du login', () => {
@@ -68,9 +68,12 @@ describe('authInterceptor', () => {
 
     http.post('/api/auth/login', {}).subscribe({ error: () => {} });
 
-    httpMock.expectOne('/api/auth/login')
-      .flush('Bad credentials', { status: 401, statusText: 'Unauthorized' });
+    httpMock.expectOne('/api/auth/login').flush('Bad credentials', {
+      status: 401,
+      statusText: 'Unauthorized'
+    });
 
     expect(routerSpy.navigate).not.toHaveBeenCalled();
+    expect(localStorage.getItem('token')).toBe('abc123');
   });
 });
