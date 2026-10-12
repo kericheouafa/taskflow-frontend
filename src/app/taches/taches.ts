@@ -92,39 +92,29 @@ updateStatut(tache: any, idStatut: number) {
   });
 
 }
-estUrgente(tache: any): boolean {
-  // Pas de date, ou tâche terminée : jamais urgente
-  if (!tache.dateLimite || tache.statut.id === 3) {
-    return false;
+private joursRestants(tache: any): number | null {
+  if (!tache.dateLimite || tache.statut?.id === 3) {
+    return null;
   }
 
   const limite = new Date(tache.dateLimite + 'T00:00:00');
   const aujourdhui = new Date();
   aujourdhui.setHours(0, 0, 0, 0);
 
-  const joursRestants = Math.round(
-    (limite.getTime() - aujourdhui.getTime()) / (1000 * 60 * 60 * 24)
-  );
+  return Math.round((limite.getTime() - aujourdhui.getTime()) / (1000 * 60 * 60 * 24));
+}
 
-  return joursRestants <= 2;
+estUrgente(tache: any): boolean {
+  const jours = this.joursRestants(tache);
+  return jours !== null && jours <= 2;
 }
 
 estCritique(tache: any): boolean {
-  // Pas de date, ou tâche terminée : jamais urgente
-  if (!tache.dateLimite || tache.statut.id === 3) {
-    return false;
-  }
-
-  const limite = new Date(tache.dateLimite + 'T00:00:00');
-  const aujourdhui = new Date();
-  aujourdhui.setHours(0, 0, 0, 0);
-
-  const joursRestants = Math.round(
-    (limite.getTime() - aujourdhui.getTime()) / (1000 * 60 * 60 * 24)
-  );
-
-  return joursRestants <= 5 &&  joursRestants >2 ;
+  const jours = this.joursRestants(tache);
+  return jours !== null && jours > 2 && jours <= 5;
 }
+
+
 filtreActif: string = 'tous';
 
 choisirFiltre(filtre: string) {
