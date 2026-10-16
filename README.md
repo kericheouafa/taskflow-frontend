@@ -55,7 +55,7 @@ Navigateur ──► Frontend Angular (Vercel) ──► API REST Spring Boot (R
 | Frontend | Angular 21, TypeScript, Angular Material, RxJS |
 | Backend | Java, Spring Boot, Spring Data JPA / Hibernate, API REST |
 | Base de données | PostgreSQL |
-| Tests | Vitest (Angular), JUnit (backend, en cours) |
+| Tests | Vitest (Angular), JUnit 5 et Mockito (backend) |
 | Outils et déploiement | Git, GitHub, Docker, Vercel (frontend), Render (backend) |
 
 ## Installation
@@ -105,6 +105,8 @@ Les tests unitaires du frontend couvrent notamment :
 
 Le service Angular est remplacé par un faux dans les tests : aucun appel réseau réel.
 
+Le backend dispose de 25 tests unitaires (JUnit 5, Mockito, MockMvc) : service JWT, service des tâches et contrôleur d'authentification. Voir le [dépôt backend](https://github.com/kericheouafa/taskflow-springboot).
+
 ## Structure du frontend
 
 ```
@@ -126,7 +128,6 @@ src/app/
 ## Pistes d'amélioration
 
 - Champ description pour les tâches
-- Tests unitaires du backend (JUnit)
 - Modification du titre, de la priorité et de l'échéance d'une tâche existante
 
 ## Auteure
