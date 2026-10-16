@@ -105,7 +105,7 @@ Les tests unitaires du frontend couvrent notamment :
 
 Le service Angular est remplacé par un faux dans les tests : aucun appel réseau réel.
 
-Le backend dispose de 25 tests unitaires (JUnit 5, Mockito, MockMvc) : service JWT, service des tâches et contrôleur d'authentification. Voir le [dépôt backend](https://github.com/kericheouafa/taskflow-springboot).
+Le backend dispose de 30 tests unitaires (JUnit 5, Mockito, MockMvc) : service JWT, service des tâches et contrôleurs d'authentification et de tâches. Voir le [dépôt backend](https://github.com/kericheouafa/taskflow-springboot).
 
 ## Structure du frontend
 
